@@ -54,4 +54,16 @@ describe 'Markets endpoints' do
 
     end
   end
+
+
+  describe 'market search params' do
+    it 'gets all markets by name' do 
+     market = create(:market, name: "Pearl")
+      get "/api/v0/markets/search?name=Pearl"
+
+      market_search = JSON.parse(response.body, symbolize_names: true)[:data]
+      expect(market_search[:attributes][:name]).to eq(market.name)
+     
+    end
+  end
 end
