@@ -5,6 +5,10 @@ class Api::V0::MarketsController < ApplicationController
 
   def show
     market = Market.find_by(params[:fmid])
-    render json: MarketSerializer.new(market) 
+    if market 
+      render json: MarketSerializer.new(market) 
+    else 
+       render json: {error: "No Market ID"}, status: 404
+    end
   end
 end

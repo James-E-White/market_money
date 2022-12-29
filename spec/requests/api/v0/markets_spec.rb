@@ -40,8 +40,17 @@ describe 'Markets endpoints' do
       expect(market_id[:attributes][:fmid]).to eq(market.fmid)
  
       expect(market_id[:attributes][:name]).to eq(market.name)
-      binding.pry
       expect(market_id[:attributes][:name]).to_not eq(market2.name)
+
+    end
+
+    it 'an invalid fmid returns a 404 error with message' do 
+      get "/api/v0/markets/7"
+
+      message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to have_http_status 404
+      expect(message[:error]).to eq("No Market ID")
 
     end
   end
