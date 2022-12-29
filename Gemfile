@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
-
+gem 'jsonapi-serializer'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.8'
 # Use postgresql as the database for Active Record
@@ -34,6 +34,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   gem 'faraday'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
